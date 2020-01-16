@@ -25,7 +25,7 @@ Actions you can do with files:
 Actions you can do with folders:
 1.  Convert to MP4 with best quality
 2.  Convert to MP4 with normal quality (low file size)
-3.  Convert to 720p MP4
+4.  Join and convert videofiles to MP4
 
-4.  Extract soundtracks from video
-5.  Convert sound files to MP3
+5.  Extract soundtracks from video
+6.  Convert sound files to MP3
