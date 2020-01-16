@@ -96,9 +96,10 @@ ECHO ___________MENU FOLDER_____________
 ECHO 1.  Convert to MP4 with best quality
 ECHO 2.  Convert to MP4 with normal quality (low file size)
 ECHO 3.  Convert to 720p MP4
+ECHO 4.  Join videofiles and convert to MP4
 ECHO -------------------------------------
-ECHO 4.  Extract soundtracks from video
-ECHO 5.  Convert sound files to MP3
+ECHO 5.  Extract soundtracks from video
+ECHO 6.  Convert sound files to MP3
 ECHO _____________________________________
 ECHO           PRESS 'Q' TO QUIT
 ECHO.
@@ -160,6 +161,19 @@ for %%f in (%1\*.*) do (
 GOTO:Quit
 
 :SelectionFolder4
+
+del %~dp0list.txt
+for %%f in (%1\*.*) do echo file %%~nxf >>%~dp0list.txt
+cd /D %1
+%ffmpeg% -hide_banner -f concat -i %~dp0list.txt -vcodec libx264 -strict -2 -threads 0 -y %1.mp4
+echo _____________________________________
+echo Joined and converted files are here: %1.mp4
+	
+GOTO:Quit
+
+
+
+:SelectionFolder5
 set np=%~1_m4a
 md "%np%"
 for %%f in (%1\*.*) do (
@@ -169,7 +183,7 @@ for %%f in (%1\*.*) do (
 	)
 GOTO:Quit
 
-:SelectionFolder5
+:SelectionFolder6
 set np=%~1_mp3
 md "%np%"
 for %%f in (%1\*.*) do (
