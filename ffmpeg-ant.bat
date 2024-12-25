@@ -20,6 +20,7 @@ ECHO -------------------------------------
 ECHO 7.  Extract soundtrack
 ECHO -------------------------------------
 ECHO 8.  Show list of devices
+ECHO 9.  Move flags to begining
 ECHO _____________________________________
 ECHO           PRESS 'Q' TO QUIT
 ECHO.
@@ -86,7 +87,7 @@ GOTO:MENU
 
 :Selection9
 
-ECHO checking...
+%ffmpeg% -hide_banner -i %1 -c copy -movflags +faststart -y %1.mp4
 
 GOTO:Quit
 
